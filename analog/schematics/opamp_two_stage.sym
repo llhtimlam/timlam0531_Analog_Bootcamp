@@ -1,0 +1,21 @@
+v {xschem version=3.4.7 file_version=1.2}
+G {}
+K {}
+V {}
+S {type=subcircuit
+format="@name @pinlist @symname"
+template="name=X1"}
+E {}
+L 4 -40 -40 -40 40 {}
+L 4 -40 -40 40 0 {}
+L 4 -40 40 40 0 {}
+N -0 20 0 40 {lab=VSS}
+N -0 -40 -0 -20 {lab=VDD}
+N 40 0 60 0 {lab=VOUT}
+N -60 -20 -40 -20 {lab=VIN_P}
+N -60 20 -40 20 {lab=VIN_N}
+C {devices/vdd.sym} 0 -40 0 0 {name=VDD lab=VDD}
+C {devices/gnd.sym} 0 40 0 0 {name=VSS lab=VSS}
+C {devices/ipin.sym} -60 -20 0 0 {name=VIN_P lab=VIN_P}
+C {devices/ipin.sym} -60 20 0 0 {name=VIN_N lab=VIN_N}
+C {devices/opin.sym} 60 0 0 0 {name=VOUT lab=VOUT}

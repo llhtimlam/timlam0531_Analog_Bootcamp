@@ -1,0 +1,19 @@
+v {xschem version=3.4.7 file_version=1.2}
+G {}
+K {}
+V {}
+S {}
+E {}
+L 4 -40 -40 -40 40 {}
+L 4 -40 40 40 0 {}
+L 4 -40 -40 40 0 {}
+N -60 -20 -40 -20 {lab=VIN_P}
+N -60 20 -40 20 {lab=VIN_N}
+N 40 0 60 0 {lab=VOUT}
+N 0 -40 0 -20 {lab=VDD}
+N 0 20 0 40 {lab=VSS}
+C {devices/ipin.sym} -60 -20 0 0 {name=VIN_P1 lab=VIN_P}
+C {devices/ipin.sym} -60 20 0 0 {name=VIN_N1 lab=VIN_N}
+C {devices/opin.sym} 60 0 0 0 {name=VOUT1 lab=VOUT}
+C {devices/vdd.sym} 0 -40 0 1 {name=l3 lab=VDD}
+C {devices/gnd.sym} 0 40 0 0 {name=l4 lab=VSS}

@@ -1,0 +1,33 @@
+** sch_path: /mnt/c/Users/User/Documents/GitHub/timlam0531_Analog_Bootcamp/analog/schematics/tb_dc_analysis.sch
+**.subckt tb_dc_analysis
+VDD VDD GND 1.8
+VSS VSS GND 0
+VCM net2 GND 0.9
+R1 net3 net2 1M m=1
+R2 net1 net4 1M m=1
+VDIFF net2 net4 0
+**** begin user architecture code
+
+
+.option scale=1u
+.dc VDIFF -10m 10m 0.1m
+.control
+  run
+  plot v(vout)
+.endc
+
+
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /home/user/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /home/user/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /home/user/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /home/user/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+**** end user architecture code
+**.ends
+.GLOBAL VDD
+.GLOBAL GND
+.GLOBAL VSS
+.end
