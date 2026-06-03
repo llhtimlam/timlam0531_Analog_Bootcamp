@@ -31,7 +31,7 @@ C {devices/vsource.sym} -220 20 0 0 {value=0 name=VDIFF savecurrent=false}
 C {devices/code_shown.sym} 110 -180 0 0 {name=s1 only_toplevel=false
 value="
 .option scale=1u
-.dc VDIFF -50m 50m 0.1m
+.dc VDIFF -6m 6m 0.1m
 .control
   run
   plot v(vout)
@@ -44,12 +44,12 @@ C {devices/gnd.sym} 0 60 0 0 {name=VSS2 lab=VSS}
 C {devices/opin.sym} 80 0 0 0 {name=vout lab=vout}
 C {opamp_two_stage.sym} 0 0 0 0 {name=x1}
 C {devices/res.sym} -110 -20 1 0 {name=R1
-value=10k
+value=5000k
 footprint=1206
 device=resistor
 m=1}
 C {devices/res.sym} -110 20 1 0 {name=R2
-value=10k
+value=5000k
 footprint=1206
 device=resistor
 m=1}
