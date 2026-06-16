@@ -27,14 +27,19 @@ C {devices/gnd.sym} 0 220 0 0 {name=GND lab=GND}
 C {devices/gnd.sym} 0 120 2 0 {name=VSS1 lab=VSS}
 C {devices/vsource.sym} -300 -20 1 0 {name=VCM value=0.9 savecurrent=false}
 C {devices/gnd.sym} -350 -20 1 0 {name=GND2 lab=GND}
-C {devices/vsource.sym} -220 20 0 0 {value=0 name=VDIFF savecurrent=false}
+C {devices/vsource.sym} -220 20 0 0 {value="dc 0 ac 1" name=VDIFF savecurrent=false}
 C {devices/code_shown.sym} 110 -180 0 0 {name=s1 only_toplevel=false
 value="
 .option scale=1u
-.dc VDIFF -6m 6m 0.1m
+.ac dec 10 1 100meg
 .control
   run
-  plot v(vout)
+  
+  let gain_db = db(v(vout))
+  plot gain_db
+  
+  let phase_degrees = ph(v(vout)) * 180 / 3.1415926
+  plot phase_degrees
 .endc
 "
 }

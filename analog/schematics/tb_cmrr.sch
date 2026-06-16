@@ -25,16 +25,22 @@ C {devices/vdd.sym} 0 -210 0 0 {name=VDD1 lab=VDD}
 C {devices/gnd.sym} 0 -120 0 0 {name=GND1 lab=GND}
 C {devices/gnd.sym} 0 220 0 0 {name=GND lab=GND}
 C {devices/gnd.sym} 0 120 2 0 {name=VSS1 lab=VSS}
-C {devices/vsource.sym} -300 -20 1 0 {name=VCM value=0.9 savecurrent=false}
+C {devices/vsource.sym} -300 -20 1 0 {name=VCM value="dc 0.9 ac 1" savecurrent=false}
 C {devices/gnd.sym} -350 -20 1 0 {name=GND2 lab=GND}
 C {devices/vsource.sym} -220 20 0 0 {value=0 name=VDIFF savecurrent=false}
 C {devices/code_shown.sym} 110 -180 0 0 {name=s1 only_toplevel=false
 value="
 .option scale=1u
-.dc VDIFF -6m 6m 0.1m
+.ac dec 10 1 100meg
 .control
   run
-  plot v(vout)
+  * Common-Mode Gain (Acm) profile
+  let acm_db = db(v(vout))
+  
+  * CMRR = Adm_dB - Acm_dB
+  let cmrr = 58.4 - acm_db
+  
+  plot cmrr
 .endc
 "
 }

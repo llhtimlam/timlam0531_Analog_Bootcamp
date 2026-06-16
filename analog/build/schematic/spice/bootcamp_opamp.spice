@@ -1,0 +1,36 @@
+** sch_path: /mnt/c/Users/User/Documents/GitHub/timlam0531_Analog_Bootcamp/analog/schematics/bootcamp_opamp.sch
+**.subckt bootcamp_opamp
+XM1 VDD VGS GND GND sky130_fd_pr__nfet_01v8 L=1 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=4 m=4
+VDD VDD GND 0.9
+.save i(vdd)
+VGS2 VGS GND 0
+**** begin user architecture code
+
+
+.option scale=1u
+.dc VGS2 0 1.8 0.01
+.control
+  save all @m.xm1.msky130_fd_pr__nfet_01v8[gm] @m.xm1.msky130_fd_pr__nfet_01v8[vth]
+  run
+  print @m.xm1.msky130_fd_pr__nfet_01v8[vth]
+  print @m.xm1.msky130_fd_pr__nfet_01v8[gm]
+  print i(VDD)
+  plot i(VDD)
+.endc
+
+
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /home/user/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /home/user/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /home/user/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /home/user/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.GLOBAL VDD
+.GLOBAL VGS
+.end

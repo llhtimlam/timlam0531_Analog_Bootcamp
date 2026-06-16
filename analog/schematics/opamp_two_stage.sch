@@ -57,8 +57,9 @@ N -0 160 0 180 {lab=VSS}
 N -0 -300 -0 -280 {lab=VDD}
 N -20 -230 -20 160 {lab=VSS}
 N 80 -120 80 160 {lab=VSS}
+N -0 150 -0 160 {lab=VSS}
 C {sky130_fd_pr/nfet_01v8.sym} -100 -60 0 1 {name=M1
-L=1
+L=0.3
 W=2
 nf=1 
 mult=1
@@ -72,7 +73,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -300 -60 0 0 {name=M2
-L=1
+L=0.3
 W=2
 nf=1 
 mult=1
@@ -86,7 +87,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} -140 -210 0 0 {name=M3
-L=0.5
+L=0.3
 W=2
 nf=1
 mult=1
@@ -100,7 +101,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} -260 -210 0 1 {name=M4
-L=0.5
+L=0.3
 W=2
 nf=1
 mult=1
@@ -114,8 +115,8 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 180 -210 0 0 {name=M5
-L=0.5
-W=8
+L=0.3
+W=2
 nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -128,9 +129,9 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 180 90 0 0 {name=M6
-L=4
-W=0.5
-nf=1 
+L=1
+W=2
+nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -142,9 +143,9 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -180 90 0 1 {name=M7
-L=4
-W=0.5
-nf=1 
+L=1
+W=2
+nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -168,6 +169,12 @@ C {devices/opin.sym} 220 -60 0 0 {name=vout lab=vout}
 C {devices/ipin.sym} 0 -300 1 0 {name=VDD lab=VDD}
 C {devices/ipin.sym} 0 180 3 0 {name=VSS lab=VSS}
 C {sky130_fd_pr/res_high_po.sym} 0 -230 0 0 {name=R2
+W=1
+L=1
+model=res_high_po
+spiceprefix=X
+mult=1}
+C {sky130_fd_pr/res_high_po.sym} 0 120 0 0 {name=R3
 W=1
 L=1
 model=res_high_po
